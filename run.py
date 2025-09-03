@@ -7,7 +7,9 @@ import sys
 import uvicorn
 
 # Adicionar o diretório atual ao PYTHONPATH
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
 
 # Importar configurações
 from app.core.config import settings
