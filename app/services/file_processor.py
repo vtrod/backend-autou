@@ -73,6 +73,7 @@ class FileProcessorService:
                 status_code=500,
                 detail="Erro interno ao processar arquivo"
             )
+    
     def _extract_text_from_pdf(self, pdf_content: bytes) -> str:
         """Extrai texto de arquivo PDF"""
         try:
