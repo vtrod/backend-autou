@@ -1,9 +1,15 @@
 """
 Aplicação principal FastAPI - AutoU Email Classifier
 """
-import logging
+import os
 import sys
+import logging
 from contextlib import asynccontextmanager
+
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
