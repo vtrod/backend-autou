@@ -111,7 +111,13 @@ temp/
 .tmp/
 
 # AI/ML models and data
-models/
+# Atenção: não ignorar o pacote de modelos da aplicação FastAPI
+!app/models/
+!app/models/**
+
+# Caso você tenha arquivos de modelo de ML, ajuste os nomes/pastas específicos abaixo
+# Exemplo: ignore apenas diretórios de modelos fora de app/
+ml_models/
 *.pkl
 *.joblib
 *.model
