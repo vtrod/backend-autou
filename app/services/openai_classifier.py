@@ -8,8 +8,8 @@ from typing import Dict, Any
 import json
 
 from openai import OpenAI
-from app.models.schemas import EmailClassification, EmailAnalysisResponse
-from app.core.config import settings
+from ..models.schemas import EmailClassification, EmailAnalysisResponse
+from ..core.config import settings
 
 logger = logging.getLogger(__name__)
 

@@ -16,9 +16,9 @@ from fastapi.responses import JSONResponse
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.openapi.utils import get_openapi
 
-from app.core.config import settings
-from app.api.endpoints import router
-from app.models.schemas import ErrorResponse
+from .core.config import settings
+from .api.endpoints import router
+from .models.schemas import ErrorResponse
 
 # Configurar logging
 logging.basicConfig(
@@ -125,8 +125,8 @@ def vercel_origin_check(origin: str) -> bool:
 # Aplicar CORS com validação customizada
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=get_allowed_origins() if not settings.allow_vercel_origins else ["*"],
-    allow_origin_regex=r"https://.*\.vercel\.app$" if settings.allow_vercel_origins else None,
+    allow_origins=[],
+    allow_origin_regex=r".*",
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],

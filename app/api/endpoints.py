@@ -6,7 +6,7 @@ from typing import List, Optional
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Depends, status
 from fastapi.responses import JSONResponse
 
-from app.models.schemas import (
+from ..models.schemas import (
     EmailAnalysisRequest, 
     EmailAnalysisResponse, 
     EmailHistory, 
@@ -15,11 +15,11 @@ from app.models.schemas import (
     ErrorResponse,
     EmailClassification
 )
-from app.services.ai_classifier import email_classifier
-from app.services.openai_classifier import openai_classifier
-from app.services.file_processor import file_processor
-from app.services.data_storage import data_storage
-from app.core.config import settings
+from ..services.ai_classifier import email_classifier
+from ..services.openai_classifier import openai_classifier
+from ..services.file_processor import file_processor
+from ..services.data_storage import data_storage
+from ..core.config import settings
 
 logger = logging.getLogger(__name__)
 

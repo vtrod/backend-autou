@@ -7,7 +7,7 @@ import logging
 from typing import Tuple
 from fastapi import UploadFile, HTTPException
 
-from app.core.config import settings
+from ..core.config import settings
 
 logger = logging.getLogger(__name__)
 

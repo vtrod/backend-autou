@@ -6,7 +6,7 @@ from typing import List, Dict, Optional
 from datetime import datetime
 from collections import defaultdict
 
-from app.models.schemas import EmailAnalysisResponse, EmailHistory, StatsResponse, EmailClassification
+from ..models.schemas import EmailAnalysisResponse, EmailHistory, StatsResponse, EmailClassification
 
 logger = logging.getLogger(__name__)
 
