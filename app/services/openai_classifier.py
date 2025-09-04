@@ -7,7 +7,10 @@ from datetime import datetime
 from typing import Dict, Any
 import json
 
-from openai import OpenAI
+try:
+    from openai import OpenAI
+except Exception:  # pragma: no cover
+    OpenAI = None
 from ..models.schemas import EmailClassification, EmailAnalysisResponse
 from ..core.config import settings
 
@@ -22,7 +25,7 @@ class OpenAIEmailClassifierService:
         self.client = None
         self.is_available = False
         
-        if settings.openai_api_key:
+        if settings.openai_api_key and OpenAI is not None:
             try:
                 self.client = OpenAI(api_key=settings.openai_api_key)
                 self.is_available = True
@@ -31,7 +34,7 @@ class OpenAIEmailClassifierService:
                 logger.error(f"Erro ao inicializar cliente OpenAI: {e}")
                 self.is_available = False
         else:
-            logger.warning("API key da OpenAI não configurada")
+            logger.warning("OpenAI indisponível ou API key não configurada. Usando fallback.")
     
     def get_system_prompt(self) -> str:
         """Retorna o prompt do sistema para classificação de emails"""
